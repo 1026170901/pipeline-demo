@@ -13,6 +13,12 @@ pipeline {
     }
 
 	stages {
+		//拉代码
+		stage('stage0'){
+			steps {
+				checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'c5e8beac-81c2-4032-99d4-cd4ad4172197', url: 'git@github.com:1026170901/pipeline-demo.git']]])
+			}
+		}	
 		stage('stage1'){
 			steps {
 				echo 'this is steps1'
