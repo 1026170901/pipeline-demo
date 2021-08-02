@@ -1,0 +1,58 @@
+pipeline {
+	agent any
+
+	//定义变量
+	environment {
+        unit_test = true
+    }
+
+ 	parameters {
+ 		string(name: 'userName', defaultValue: 'lizhiqiang', description: 'string参数userName')
+ 		booleanParam(name: 'isBoy', defaultValue: 'true', description: 'boolean参数isBoy')
+ 		choice(name: 'env_type', choices: ['test', 'dev', 'prod'], description: '选择参数env_type')
+    }
+
+	stages {
+		stage('stage1'){
+			steps {
+				echo 'this is steps1'
+			}
+		}
+		stage('stage2'){
+			steps {
+				sh 'pwd'
+			}
+		}
+		stage('stage3'){
+			steps {
+				script{
+					if(unit_test == true){
+						echo '单元测试变量为true'
+					}
+				}
+			}
+		}
+		stage('stage4'){
+			steps {
+				sh 'echo 获取执行参数userName--------${userName}'
+				sh 'echo 获取执行参数isBoy--------${isBoy}'
+				sh 'echo 获取执行参数env_type--------${env_type}'
+			}
+		}
+	}
+
+	//后置操作
+	post {
+        always {
+            script {
+                echo 'post always'
+            }
+        }
+        failure {
+            script {
+                echo 'stage出错触发这个'
+            }
+        }
+    }
+
+}
