@@ -4,19 +4,19 @@ pipeline {
 	stages {
 		stage('Build'){
 			steps {
-				echo 'Building...'
+				echo 'Building...from scm jenkinsfile..'
 			}
 		}
 
 		stage('Test') {
 			steps {
-				echo 'Testing...'
+				echo 'Testing...from scm jenkinsfile..'
 			}
 		}
 
 		stage('Deploy') {
 			steps {
-				echo 'Deploying...'
+				echo 'Deploying...from scm jenkinsfile..'
 			}
 		}
 	}
