@@ -10,7 +10,7 @@ pipeline {
 				println env.JOB_NAME
 				//使用内置变量
 				echo env.WORKSPACE
-				echo 'this is steps1'
+				echo 'this is steps1'			
 			}
 		}
 		stage('stage2'){
@@ -22,6 +22,7 @@ pipeline {
 			steps {
 				//使用内置方法
 				echo('使用echo方法')
+				echo("${env.WORKSPACE}")	
 				sh('ls')
 			}
 		}
