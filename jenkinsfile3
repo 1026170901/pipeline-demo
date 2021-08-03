@@ -6,7 +6,9 @@ pipeline {
 		
 		stage('stage1'){
 			steps {
+				//使用内置变量
 				println env.JOB_NAME
+				//使用内置变量
 				echo env.WORKSPACE
 				echo 'this is steps1'
 			}
@@ -18,6 +20,7 @@ pipeline {
 		}
 		stage('stage3'){
 			steps {
+				//使用内置方法
 				echo('使用echo方法')
 				sh('ls')
 			}
